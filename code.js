@@ -1,5 +1,10 @@
 function tsp_hk(distance_matrix) {
     let n = distance_matrix.length;
+    
+    if (n === 0 || n === 1) {
+        return 0;
+    }
+
     let memo = new Array(1 << n).fill(null).map(() => new Array(n).fill(null));
     
     function helper(mask, pos) {
@@ -12,8 +17,8 @@ function tsp_hk(distance_matrix) {
         let minDistance = Infinity;
         for (let next = 0; next < n; next++) {
             if ((mask & (1 << next)) === 0) {
-                let newMask = mask | (1 << next);
-                let distance = distance_matrix[pos][next] + helper(newMask, next);
+                const newMask = mask | (1 << next);
+                const distance = distance_matrix[pos][next] + helper(newMask, next);
                 minDistance = Math.min(minDistance, distance);
             }
         }
