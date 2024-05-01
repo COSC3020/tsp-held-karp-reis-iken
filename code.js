@@ -1,11 +1,11 @@
 function tsp_hk(distance_matrix) {
-    let n = distance_matrix.length;
+    const n = distance_matrix.length;
     
     if (n === 0 || n === 1) {
         return 0;
     }
 
-    let memo = new Array(1 << n).fill(null).map(() => new Array(n).fill(null));
+    const memo = new Array(1 << n).fill(null).map(() => new Array(n).fill(null));
     
     function helper(mask, pos) {
         if (mask === (1 << n) - 1) {
