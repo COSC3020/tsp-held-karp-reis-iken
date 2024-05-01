@@ -47,3 +47,9 @@ Test your new function; I've provided some basic testing code in `code.test.js`.
 What is the worst-case asymptotic time complexity of your implementation? What
 is the worst-case asymptotic memory complexity? Add your answer, including your
 reasoning, to this markdown file.
+
+**MY ANSWER:**
+
+Since we are using recursion to find all possible permutations of the tour, its runtime complexity is factorial. The worst-case asymptotic time complexity expression is $\Theta(n!)$.
+
+In terms of memory, my implementation uses a map to store already-completed solutions to the subproblems it faces throughout the process. The number of subproblems should be n - 1. And for each of these subproblems, we generate a key whose length is n. Thus, the worst-case memory complexity should be $\Theta(n(n-1)!)$.
