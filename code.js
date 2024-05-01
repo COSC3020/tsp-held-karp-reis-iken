@@ -1,7 +1,5 @@
 function tsp_hk(distance_matrix) {
     let n = distance_matrix.length;
-    
-    // Initialize memoization table
     let memo = new Array(1 << n).fill(null).map(() => new Array(n).fill(null));
     
     function helper(mask, pos) {
