@@ -1,6 +1,6 @@
 function tsp_hk(distance_matrix) {
     let n = distance_matrix.length;
-    let memo = {};
+    let memory = {};
 
     function getKey(cities, start) {
         return Array.from(cities).join(',') + '-' + start;
