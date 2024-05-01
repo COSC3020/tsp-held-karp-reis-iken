@@ -1,6 +1,6 @@
 function tsp_hk(distances) {
     const n = distances.length;
-    if (n === 0 || n === 1) return 0;
+    if (n === 0 || n === 1) return Infinity;
 
     const cache = {};
 
