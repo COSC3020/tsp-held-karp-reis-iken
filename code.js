@@ -1,27 +1,28 @@
-function tsp_hk(distance_matrix) {
-    const n = distance_matrix.length;
-    if (n === 0 || n === 1) {
-        return 0;
+function tsp_hk(distances) {
+    const n = distances.length;
+    const cache = {};
+
+    function getKey(subset, city) {
+        return subset + '-' + city;
     }
-    const memo = new Array(1 << n).fill(null).map(() => new Array(n).fill(null));
-    
-    function helper(mask, pos) {
-        if (mask === (1 << n) - 1) {
-            return distance_matrix[pos][0];
-        }
-        if (memo[mask][pos] !== null) {
-            return memo[mask][pos];
-        }
-        let minDistance = Infinity;
-        for (let next = 0; next < n; next++) {
-            if ((mask & (1 << next)) === 0) {
-                const newMask = mask | (1 << next);
-                const distance = distance_matrix[pos][next] + helper(newMask, next);
-                minDistance = Math.min(minDistance, distance);
+
+    function dp(subset, city) {
+        if (subset === 0 && city !== 0) return distances[city][0];
+        const key = getKey(subset, city);
+        if (cache[key] !== undefined) return cache[key];
+        let minTourLength = Infinity;
+        for (let nextCity = 0; nextCity < n; nextCity++) {
+            if (nextCity !== city && (subset & (1 << nextCity))) {
+                const newSubset = subset & ~(1 << city);
+                const tourLength = dp(newSubset, nextCity) + distances[nextCity][city];
+                minTourLength = Math.min(minTourLength, tourLength);
             }
         }
-        memo[mask][pos] = minDistance;
-        return minDistance;
+        cache[key] = minTourLength;
+        return minTourLength;
     }
-    return helper(1, 0);
+    let subset = (1 << n) - 1;
+    subset &= ~(1 << 0);
+    const startCity = 0;
+    return dp(subset, startCity);
 }
