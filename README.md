@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/KdVea3AG)
 # Traveling Salesperson Problem -- Held-Karp Algorithm
 
 This exercise is about the Traveling Salesperson Problem I mentioned in the
@@ -46,3 +47,9 @@ Test your new function; I've provided some basic testing code in `code.test.js`.
 What is the worst-case asymptotic time complexity of your implementation? What
 is the worst-case asymptotic memory complexity? Add your answer, including your
 reasoning, to this markdown file.
+
+**MY ANSWER:**
+
+In my implementation here, we recursively call the helper function for $2^{n-1}$ possible subsets for each starting city, which there are n of. And we also take n time to iterate over each city in each subset. Thus, the worst-case asymptotic time complexity expression is $\Theta(n^2(2^n))$.
+
+In terms of memory, my implementation uses a map to memoize the subproblems' results. The number of subsets should be $2^n$, and the size of each subset is n in the worst case. Thus, the worst-case memory complexity should be $\Theta(n(2^n)!)$.
