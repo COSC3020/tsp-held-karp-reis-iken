@@ -52,4 +52,4 @@ reasoning, to this markdown file.
 
 In my implementation here, we recursively call the helper function for $2^{n-1}$ possible subsets for each starting city, which there are n of. And we also take n time to iterate over each city in each subset. Thus, the worst-case asymptotic time complexity expression is $\Theta(n^2(2^n))$.
 
-In terms of memory, my implementation uses a map to memoize the subproblems' results. The number of subsets should be 2^n, and the size of each subset is n in the worst case. Thus, the worst-case memory complexity should be $\Theta(n(2^n)!)$.
+In terms of memory, my implementation uses a map to memoize the subproblems' results. The number of subsets should be $2^n$, and the size of each subset is n in the worst case. Thus, the worst-case memory complexity should be $\Theta(n(2^n)!)$.
